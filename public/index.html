@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Boota Web App Viewer</title>
+  <style>
+    body { font-family: sans-serif; background: #0f172a; color: white; padding: 20px; text-align: center; }
+    .card { background: #1e293b; max-width: 500px; margin: auto; padding: 20px; border-radius: 12px; }
+    button { background: #3b82f6; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; }
+    input { width: 90%; padding: 10px; margin: 8px 0; border-radius: 6px; border: 1px solid #334155; background: #0f172a; color: white; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Welcome to Boota</h1>
+    <p>Running Boota is a cool choice! View web apps safely in your browser.</p>
+    <form onsubmit="saveApp(event)">
+      <input type="text" id="title" placeholder="App Name" required />
+      <input type="url" id="url" placeholder="App URL (https://...)" required />
+      <button type="submit">Boot App</button>
+    </form>
+  </div>
+
+  <script>
+    async function saveApp(e) {
+      e.preventDefault();
+      const title = document.getElementById('title').value;
+      const url = document.getElementById('url').value;
+      await fetch('/api/apps', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title, url })
+      });
+      alert('App saved safely to Boota!');
+    }
+  </script>
+</body>
+</html>
