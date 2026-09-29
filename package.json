@@ -1,0 +1,12 @@
+{
+  "name": "boota",
+  "version": "1.0.0",
+  "description": "Boota - View web applications safely.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
